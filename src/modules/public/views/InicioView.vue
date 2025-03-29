@@ -5,18 +5,19 @@
     <section class="py-7">
         <div class="container">
 
+            <h2 class="text-center mb-5">Productos mas Vendidos</h2>
+
             <div class="row">
 
 
-                <div 
-                   v-for="producto in listadoProductos" :key="producto.id"
-                    class="col-lg-4  mt-lg-0 mt-4">
+                <div v-for="producto in listadoProductos" :key="producto.id" class="col-lg-4  mt-lg-0 mt-4">
 
                     <div class="card">
                         <div class="card-header p-0 position-relative mt-2 mx-2 z-index-2">
+                            <span class="bg-dark text-white badge mt-2 me-2 position-absolute top-0 end-0" > {{ producto.categoria }} </span>
                             <a class="d-block blur-shadow-image">
-                                <img :src="extraerPrimeraImagen(producto.imagen)"
-                                    alt="img-colored-shadow" class="img-fluid border-radius-lg">
+                                <img :src="extraerPrimeraImagen(producto.imagen)" alt="img-colored-shadow"
+                                    class="img-fluid border-radius-lg">
                             </a>
                         </div>
                         <div class="card-body text-center">
@@ -27,10 +28,13 @@
                             </h5>
                             <h3> Bs. {{ producto.precio }}</h3>
                             <p class="mb-0">
-                                {{  producto.descripcion }}
+                                {{ extractoTexto(producto.descripcion, 100) }}
                             </p>
-                            <button type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">Find out
-                                more</button>
+                            <button 
+                                @click="carritoStore.agregarProducto(producto)"
+                                type="button" class="btn bg-gradient-info btn-sm mb-0 mt-3">
+                                Añadir al carrito
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -226,11 +230,20 @@ import { cargarProductos } from '@/services/productoServicio.js'
 
 import { onMounted, ref } from 'vue'
 
+import { extraerPrimeraImagen, extractoTexto } from '@/helpers/productoHelper.js'
+
+
+import { useCarritoStore } from '@/modules/public/stores/useCarritoStore.js'
+
 const listadoProductos = ref([])
+
+
+const carritoStore = useCarritoStore()
+
 
 const listarProductos = async () => {
 
-    const respuesta = await cargarProductos()
+    const respuesta = await cargarProductos({ page: 1, limit: 3 })
 
     // console.log()
 
@@ -238,16 +251,10 @@ const listarProductos = async () => {
 
 }
 
-const extraerPrimeraImagen = (imagenesTxt)=>{
-
-    const imagenesArray= JSON.parse(imagenesTxt)
-
-    return imagenesArray[0] || '';
-
-}
 
 
-onMounted(() =>{
+
+onMounted(() => {
 
 
     listarProductos()

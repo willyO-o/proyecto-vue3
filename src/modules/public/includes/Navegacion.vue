@@ -53,60 +53,9 @@
                                     </RouterLink>
                                 </li>
 
-                                <li class="nav-item dropdown dropdown-hover mx-2">
-                                    <a class="nav-link ps-2 d-flex cursor-pointer align-items-center font-weight-semibold"
-                                        id="dropdownMenuPages" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-cart-shopping me-1 mt-1"></i>
+                               
+                               <Carrito />
 
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-animation ms-n3 dropdown-md p-3 border-radius-xl mt-0 mt-lg-3"
-                                        aria-labelledby="dropdownMenuPages">
-                                        <div class="d-none d-lg-block">
-                                            <h6
-                                                class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1">
-                                                Landing Pages
-                                            </h6>
-                                            <a href="/pages/about-us.html" class="dropdown-item border-radius-md">
-                                                <span>About Us</span>
-                                            </a>
-                                            <a href="/pages/contact-us.html" class="dropdown-item border-radius-md">
-                                                <span>Contact Us</span>
-                                            </a>
-                                            <a href="/pages/author.html" class="dropdown-item border-radius-md">
-                                                <span>Author</span>
-                                            </a>
-                                            <h6
-                                                class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1 mt-3">
-                                                Account
-                                            </h6>
-                                            <a href="/pages/sign-in.html" class="dropdown-item border-radius-md">
-                                                <span>Sign In</span>
-                                            </a>
-                                        </div>
-                                        <div class="d-lg-none">
-                                            <h6
-                                                class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1">
-                                                Landing Pages
-                                            </h6>
-                                            <a href="/pages/about-us.html" class="dropdown-item border-radius-md">
-                                                <span>About Us</span>
-                                            </a>
-                                            <a href="/pages/contact-us.html" class="dropdown-item border-radius-md">
-                                                <span>Contact Us</span>
-                                            </a>
-                                            <a href="/pages/author.html" class="dropdown-item border-radius-md">
-                                                <span>Author</span>
-                                            </a>
-                                            <h6
-                                                class="dropdown-header text-dark font-weight-bolder d-flex align-items-center px-1 mt-3">
-                                                Account
-                                            </h6>
-                                            <a href="/pages/sign-in.html" class="dropdown-item border-radius-md">
-                                                <span>Sign In</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
 
                                 <li class="nav-item my-auto ms-3 ms-lg-0">
                                     <RouterLink to="/login"
@@ -125,5 +74,7 @@
 
 </template>
 <script setup>
+
+import Carrito from '@/modules/public/components/Carrito.vue'
 
 </script>
