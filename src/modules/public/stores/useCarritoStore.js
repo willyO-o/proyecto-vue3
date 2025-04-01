@@ -27,6 +27,8 @@ export const useCarritoStore = defineStore('carrito', () => {
 
     function agregarProducto(producto, cantidad = 1) {
 
+        cantidad = Number(cantidad);
+
         const productoExistente = carrito.value.find(item => item.id === producto.id)
 
 
@@ -71,6 +73,7 @@ export const useCarritoStore = defineStore('carrito', () => {
         localStorage.removeItem('carrito')
 
     }
+    
 
 
     function calcularTotalCarrito() {
@@ -81,6 +84,13 @@ export const useCarritoStore = defineStore('carrito', () => {
     }
 
 
+    function cantidadProducto (id){
+         const producto = carrito.value.find(item => item.id === id)
+
+         return producto ? producto.cantidad : 0;
+
+    }
+
 
 
     return {
@@ -89,6 +99,7 @@ export const useCarritoStore = defineStore('carrito', () => {
         eliminarProducto,
         vaciarCarrito,
         calcularTotalCarrito,
+        cantidadProducto,
     }
 
 })

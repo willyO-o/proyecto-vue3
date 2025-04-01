@@ -47,7 +47,7 @@
                             <i class="fas fa-shopping-cart me-1"></i>
                             <span>Ver Carrito</span>
                         </RouterLink>
-                        <RouterLink href="/pagar" class="dropdown-item border-radius-md">
+                        <RouterLink to="/pagar" class="dropdown-item border-radius-md">
                             <i class="fas fa-credit-card me-1"></i>
                             <span>Pagar</span>
                         </RouterLink>
