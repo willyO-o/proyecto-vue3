@@ -41,6 +41,9 @@ import { extraerPrimeraImagen, extractoTexto } from '@/helpers/productoHelper.js
 
 import { useCarritoStore } from '@/modules/public/stores/useCarritoStore.js'
 
+
+const carritoStore = useCarritoStore()
+
 const props = defineProps(['producto']);
 
 

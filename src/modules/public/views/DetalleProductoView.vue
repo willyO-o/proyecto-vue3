@@ -43,17 +43,16 @@
                                 <div class="col-md-6">
 
                                     <div class="d-flex justify-content-lg-start justify-content-center p-2">
-                                        <a 
-                                            @click="reducirCantidad()"
-                                        class="input-group-text btn btn-sm btn-dark mb-0" id="basic-addon1">
+                                        <a @click="reducirCantidad()" class="input-group-text btn btn-sm btn-dark mb-0"
+                                            id="basic-addon1">
                                             <i class="fas fa-minus"></i>
                                         </a>
                                         <input type="text" class="form-control form-control-sm text-center border"
                                             aria-label="Username" aria-describedby="basic-addon1"
                                             v-model="cantidadProducto" />
-                                        <a 
-                                            @click="adicionarCantidad()"
-                                        class="input-group-text  btn btn-sm btn-dark mb-0" id="basic-addon1">
+                                            
+                                        <a @click="adicionarCantidad()"
+                                            class="input-group-text  btn btn-sm btn-dark mb-0" id="basic-addon1">
                                             <i class="fas fa-add"></i>
                                         </a>
                                     </div>
@@ -64,11 +63,8 @@
 
                             <div class="d-flex justify-content-lg-start justify-content-center p-2">
 
-                                <button 
-                                @click="carritoStore.agregarProducto(datosProducto, cantidadProducto)"
-
-                                :disabled="carritoStore.cantidadProducto(datosProducto.id) >= datosProducto.stock"
-                                
+                                <button @click="carritoStore.agregarProducto(datosProducto, cantidadProducto)"
+                                    :disabled="carritoStore.cantidadProducto(datosProducto.id) >= datosProducto.stock"
                                     class="btn btn-info">
 
                                     <i class="fas fa-shopping-cart"></i>
@@ -145,18 +141,18 @@ const listarProducto = async () => {
 
 }
 
-const adicionarCantidad = () =>{
+const adicionarCantidad = () => {
 
-    if(cantidadProducto.value < datosProducto.value.stock){
-        cantidadProducto.value ++
+    if (cantidadProducto.value < datosProducto.value.stock) {
+        cantidadProducto.value++
     }
 
 }
 
-const reducirCantidad = () =>{
+const reducirCantidad = () => {
 
-    if(cantidadProducto.value > 1){
-        cantidadProducto.value --
+    if (cantidadProducto.value > 1) {
+        cantidadProducto.value--
     }
 
 }
