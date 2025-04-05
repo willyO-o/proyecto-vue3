@@ -41,6 +41,35 @@ const router = createRouter({
         }
 
       ]
+    },
+    {
+      path: '/admin',
+      name: 'AdminLayout',
+      component: () => import('@/views/AdminLayout.vue'), 
+      children: [
+        {
+          path: '',
+          name: 'Panel',
+          component: () => import('@/modules/admin/views/PanelView.vue')
+        }
+        ,
+        {
+          path: 'productos',
+          name: 'Productos',
+          component: () => import('@/modules/admin/views/ProductoView.vue')
+
+        }, 
+        {
+          path : 'categorias',
+          name: 'Categorias',
+          component: () => import('@/modules/admin/views/CategoriaView.vue')
+        },
+        {
+          path: 'usuarios',
+          name: 'Usuarios',
+          component: () => import('@/modules/admin/views/UsuarioView.vue')
+        }
+      ]
     }
     
   ],
