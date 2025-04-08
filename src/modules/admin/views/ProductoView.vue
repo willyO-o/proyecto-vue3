@@ -73,10 +73,10 @@
                                             data-toggle="tooltip" data-original-title="Edit user">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs mx-2"
-                                            data-toggle="tooltip" data-original-title="Edit user">
+                                        <RouterLink :to="`/admin/productos/editar/${fila.id}`" class="text-secondary font-weight-bold text-xs mx-2"
+                                            data-toggle="tooltip" data-original-title="Editar producto">
                                             <i class="fas fa-pencil"></i>
-                                        </a>
+                                        </RouterLink>
                                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
                                             data-toggle="tooltip" data-original-title="Edit user">
                                             <i class="fas fa-trash-alt"></i>
@@ -115,7 +115,7 @@ import { ref, onMounted } from 'vue'
 import { cargarProductos } from '@/services/productoServicio'
 
 import { extraerPrimeraImagen } from '@/helpers/productoHelper'
-import Paginador from '../components/Paginador.vue'
+import Paginador from '@/modules/admin/components/Paginador.vue'
 
 
 const listadoProductos = ref([])
@@ -129,7 +129,7 @@ const parametros= ref({
 })
 
 
-const listarProductos = async (pagina) =>{
+const listarProductos = async (pagina=1) =>{
 
     parametros.value.page = pagina
 

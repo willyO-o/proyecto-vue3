@@ -22,4 +22,20 @@ export const cargarProductoId = async (id) => {
 
 }
 
+export const registrarProducto = async (producto) => {
+
+    const respuesta = await axiosInstance.post('/productos', producto)
+
+    return respuesta.data
+
+}
+
+export const actualizarProducto = async (producto, idProducto) => {
+
+    const respuesta = await axiosInstance.put('/productos/' + idProducto)
+
+    return respuesta.data
+
+}
+
 

@@ -68,7 +68,17 @@ const router = createRouter({
           path: 'usuarios',
           name: 'Usuarios',
           component: () => import('@/modules/admin/views/UsuarioView.vue')
-        }
+        },
+        {
+          path:'productos/crear',
+          name: 'ProductosCrear',
+          component: () => import('@/modules/admin/views/ProductoCrearView.vue')
+        },
+        {
+          path:'productos/editar/:idProducto',
+          name: 'ProductosEditar',
+          component: () => import('@/modules/admin/views/ProductoCrearView.vue')
+        },
       ]
     }
     
