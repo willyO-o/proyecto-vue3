@@ -7,9 +7,8 @@
                 <nav
                     class="navbar navbar-expand-lg  blur border-radius-lg mt-4 top-0 z-index-3 shadow position-absolute my-3 p-2 start-0 end-0 mx-4">
                     <div class="container-fluid px-0">
-                        <RouterLink class="navbar-brand font-weight-bolder ms-sm-3 text-sm"
-                            to="/" rel="tooltip"
-                            title="Designed and Coded by Creative Tim" data-placement="bottom" >
+                        <RouterLink class="navbar-brand font-weight-bolder ms-sm-3 text-sm" to="/" rel="tooltip"
+                            title="Designed and Coded by Creative Tim" data-placement="bottom">
                             Mi Tienda
                         </RouterLink>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -25,9 +24,8 @@
                             <ul class="navbar-nav navbar-nav-hover ms-auto">
 
                                 <li class="nav-item ms-lg-auto">
-                                    <RouterLink class="nav-link nav-link-icon me-2"
-                                        to="/" >
-                                     
+                                    <RouterLink class="nav-link nav-link-icon me-2" to="/">
+
                                         <p class="d-inline text-sm z-index-1 font-weight-semibold"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             title="Star us on Github">Inicio</p>
@@ -35,33 +33,38 @@
                                 </li>
 
                                 <li class="nav-item ms-lg-auto">
-                                    <RouterLink class="nav-link nav-link-icon me-2"
-                                        to="/tienda" >
-                                       
+                                    <RouterLink class="nav-link nav-link-icon me-2" to="/tienda">
+
                                         <p class="d-inline text-sm z-index-1 font-weight-semibold"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             title="Star us on Github">Tienda</p>
                                     </RouterLink>
                                 </li>
                                 <li class="nav-item ms-lg-auto">
-                                    <RouterLink class="nav-link nav-link-icon me-2"
-                                        to="/contacto" >
-                                      
+                                    <RouterLink class="nav-link nav-link-icon me-2" to="/contacto">
+
                                         <p class="d-inline text-sm z-index-1 font-weight-semibold"
                                             data-bs-toggle="tooltip" data-bs-placement="bottom"
                                             title="Star us on Github">Contacto</p>
                                     </RouterLink>
                                 </li>
 
-                               
-                               <Carrito />
+
+                                <Carrito />
 
 
                                 <li class="nav-item my-auto ms-3 ms-lg-0">
-                                    <RouterLink to="/login"
+
+                                    <RouterLink v-if="estaAutenticado" to="/admin"
                                         class="btn  bg-gradient-dark  mb-0 mt-2 mt-md-0">
+                                        Administración
+                                    </RouterLink>
+
+                                    <RouterLink v-else to="/login" class="btn  bg-gradient-dark  mb-0 mt-2 mt-md-0">
                                         Login
-                                        </RouterLink>
+                                    </RouterLink>
+
+
                                 </li>
                             </ul>
                         </div>
@@ -76,5 +79,13 @@
 <script setup>
 
 import Carrito from '@/modules/public/components/Carrito.vue'
+
+import { computed } from 'vue' 
+
+const estaAutenticado = computed(() => {
+
+    return localStorage.getItem('accessToken') !== null ? true : false
+})
+
 
 </script>

@@ -9,3 +9,10 @@ export const cargarCategorias = async (parametros = {}) => {
     return respuesta.data;
 
 }
+
+export const eliminarCategoria = async (idCategoria) =>{
+
+    const respuesta = await axiosInstance.delete('/categorias/'+idCategoria)
+
+    return  respuesta.data
+}

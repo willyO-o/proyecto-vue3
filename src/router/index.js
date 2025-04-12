@@ -35,7 +35,7 @@ const router = createRouter({
           component: () => import('@/modules/public/views/DetalleProductoView.vue')
         },
         {
-          path:'/carrito',
+          path: '/carrito',
           name: 'DetalleCarrito',
           component: () => import('@/modules/public/views/DetalleCarritoView.vue')
         }
@@ -45,7 +45,7 @@ const router = createRouter({
     {
       path: '/admin',
       name: 'AdminLayout',
-      component: () => import('@/views/AdminLayout.vue'), 
+      component: () => import('@/views/AdminLayout.vue'),
       children: [
         {
           path: '',
@@ -58,9 +58,9 @@ const router = createRouter({
           name: 'Productos',
           component: () => import('@/modules/admin/views/ProductoView.vue')
 
-        }, 
+        },
         {
-          path : 'categorias',
+          path: 'categorias',
           name: 'Categorias',
           component: () => import('@/modules/admin/views/CategoriaView.vue')
         },
@@ -70,18 +70,29 @@ const router = createRouter({
           component: () => import('@/modules/admin/views/UsuarioView.vue')
         },
         {
-          path:'productos/crear',
+          path: 'productos/crear',
           name: 'ProductosCrear',
           component: () => import('@/modules/admin/views/ProductoCrearView.vue')
         },
         {
-          path:'productos/editar/:idProducto',
+          path: 'productos/editar/:idProducto',
           name: 'ProductosEditar',
           component: () => import('@/modules/admin/views/ProductoCrearView.vue')
         },
-      ]
+      ],
+      beforeEnter: (to, from, next) => {
+        const accessToken = localStorage.getItem('accessToken')
+
+        if (accessToken) {
+          next()
+        } else {
+          next({ name: 'Login' })
+        }
+
+
+      }
     }
-    
+
   ],
 })
 

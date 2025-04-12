@@ -65,7 +65,7 @@
 
 <script setup>
 
-import { reactive } from 'vue';
+import { reactive, onBeforeMount } from 'vue';
 
 import { loginValitationSchema } from '@/modules/public/schemas/loginValitationSchema.js'
 
@@ -78,7 +78,7 @@ import { useRouter } from 'vue-router'
 import Swal from 'sweetalert2';
 
 
-const router= useRouter()
+const router = useRouter()
 
 const datosFormulario = reactive({
     email: '',
@@ -95,9 +95,9 @@ const autenticar = async () => {
 
         const resultado = await autenticarUsuario(datosFormulario)
 
-        const accessToken= resultado.access_token.token;
+        const accessToken = resultado.access_token.token;
 
-        const refreshToken= resultado.refresh_token.token;
+        const refreshToken = resultado.refresh_token.token;
 
         localStorage.setItem('accessToken', accessToken)
 
@@ -114,7 +114,7 @@ const autenticar = async () => {
             icon: "success"
         });
 
-        setTimeout(()=>{
+        setTimeout(() => {
             // redireccionr despues de 3 segundos
             router.push('/admin')
         }, 3000)
@@ -133,15 +133,16 @@ const autenticar = async () => {
 
 
 
-
-
-
-
-
-
 }
 
 
 
+onBeforeMount(() => {
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+        router.push('/admin')
+    }
+
+})
 
 </script>

@@ -204,7 +204,6 @@ const enviarDatos = async () => {
     delete datosFormularioProducto.creado_el
     delete datosFormularioProducto.categoria
 
-    console.log(datosFormularioProducto);
 
     try {
 
@@ -236,7 +235,7 @@ const enviarDatos = async () => {
 
 const listarCategorias = async () => {
 
-    const resultado = await cargarCategorias();
+    const resultado = await cargarCategorias({limit:100});
 
     listadoCategorias.value = resultado.data;
 

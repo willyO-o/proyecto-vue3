@@ -32,10 +32,17 @@ export const registrarProducto = async (producto) => {
 
 export const actualizarProducto = async (producto, idProducto) => {
 
-    const respuesta = await axiosInstance.put('/productos/' + idProducto)
+    const respuesta = await axiosInstance.put('/productos/' + idProducto, producto)
 
     return respuesta.data
 
+}
+
+export const eliminarProducto = async (idProducto) =>{
+
+    const respuesta = await axiosInstance.delete('/productos/'+ idProducto)
+
+    return respuesta.data
 }
 
 
