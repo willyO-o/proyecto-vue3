@@ -70,6 +70,8 @@ axiosInstance.interceptors.response.use(
                 localStorage.removeItem('refreshToken')
                 localStorage.removeItem('usuario')
 
+                window.location.href = '/login'
+
             } finally {
                 fueRefrescado = false
 
@@ -82,7 +84,7 @@ axiosInstance.interceptors.response.use(
 
         }
 
-        
+
 
         return Promise.reject(error)
 
