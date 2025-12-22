@@ -200,7 +200,7 @@ const enviarDatos = async () => {
     }
 
     datosFormularioProducto.imagen = JSON.stringify(listadoImagenes.value)
-    delete datosFormularioProducto.id
+    //delete datosFormularioProducto.id
     delete datosFormularioProducto.creado_el
     delete datosFormularioProducto.categoria
 
